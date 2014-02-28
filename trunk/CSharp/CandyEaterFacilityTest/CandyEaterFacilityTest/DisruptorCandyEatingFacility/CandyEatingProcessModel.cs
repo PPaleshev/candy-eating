@@ -7,17 +7,17 @@ using Disruptor.Dsl;
 
 namespace CandyEaterFacilityTest.DisruptorCandyEatingFacility
 {
-    public class DisruptorCandyCandyEatingProcessModel : ICandyEatingProcessModel
+    public class CandyEatingProcessModel : ICandyEatingProcessModel
     {
         private const int RingSize = 256*1024; // Must be multiple of 2
         private readonly AtomicLong pendingCandies;
         private readonly Disruptor<RingBufferValueEntry> disruptor;
         private readonly RingBuffer<RingBufferValueEntry> ringBuffer;
-        private volatile bool shutdownFlag;
         private readonly AtomicLong heatingCounter;
         private readonly IEventHandler<RingBufferValueEntry>[] handlers;
+        private volatile bool shutdownFlag;
 
-        public DisruptorCandyCandyEatingProcessModel(HashSet<ICandyEater> candyEaters)
+        public CandyEatingProcessModel(HashSet<ICandyEater> candyEaters)
         {
             heatingCounter = new AtomicLong(0);
             pendingCandies = new AtomicLong(0);
@@ -63,8 +63,6 @@ namespace CandyEaterFacilityTest.DisruptorCandyEatingFacility
 
         public void PutNextCandy(ICandy candy)
         {
-            if (shutdownFlag)
-                return;
             pendingCandies.IncrementAndGet();
             long sequenceNo = ringBuffer.Next();
             var entry = ringBuffer[sequenceNo];
@@ -74,7 +72,6 @@ namespace CandyEaterFacilityTest.DisruptorCandyEatingFacility
 
         public void ShutdownSync()
         {
-            shutdownFlag = true;
             while (pendingCandies.Get() > 0)
             {
                 Thread.Sleep(0);

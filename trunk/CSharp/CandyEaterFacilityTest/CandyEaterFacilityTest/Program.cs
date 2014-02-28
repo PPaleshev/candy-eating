@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using CandyEaterFacilityTest.DisruptorCandyEatingFacility;
 
 namespace CandyEaterFacilityTest
 {
@@ -29,9 +29,11 @@ namespace CandyEaterFacilityTest
                 eaters.Add(new TrackingEater());
 
             var rnd = new Random(DateTime.Now.Second);
-            const int candyCount = 20000000;
+            //const int candyCount = 20000000;
+            const int candyCount = 1000000;
             const int capacity = 1024*1024;
             var candies = new ICandy[candyCount];
+            Console.Out.WriteLine("Allocate memory for {0} candies...", candyCount);
             for(long i = 0; i < candies.Length; i++) 
             {
                 int index = rnd.Next(0, flavours.Length);
@@ -46,8 +48,12 @@ namespace CandyEaterFacilityTest
             var candiesQueue = new ConcurrentQueue<ICandy>();
             var inputQueue = new BlockingCollection<ICandy>(candiesQueue, int.MaxValue);
             ICandyEatingProcessModel model = null;
-            ICandyEatingFacility facility = new EatingFacilityFacade(candyEaters => model = new DisruptorCandyCandyEatingProcessModel(candyEaters));
+            //ICandyEatingFacility facility = new EatingFacilityFacade(candyEaters => model = new DisruptorCandyEatingFacility.CandyEatingProcessModel(candyEaters));
+            ICandyEatingFacility facility = new EatingFacilityFacade(candyEaters => model = new LockFreeProducerConsumerCandyEatingFacility.CandyEatingProcessModel(candyEaters));
             facility.Launch(inputQueue, eaters);
+
+            Console.Out.WriteLine("Start measure time");
+            var timer = Stopwatch.StartNew();
 
             //Console.Out.WriteLine("Start producing candies... Initial candies count = {0}", inputQueue.Count);
             ////for (int i = capacity; i < candies.Length; i++)
@@ -105,6 +111,8 @@ namespace CandyEaterFacilityTest
             facility.Shutdown();
 
             Console.WriteLine("Shutdown completed!... Pending candies: {0} InputQueueCount = {1}", model.PendingCandies.Get(), inputQueue.Count);
+            Console.Out.WriteLine("Time elapsed: {0}", timer.Elapsed);
+            timer.Stop();
             Console.ReadLine();
         }
     }
