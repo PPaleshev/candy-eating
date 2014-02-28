@@ -12,7 +12,7 @@ public class TrackingEater implements CandyEater {
     public static HashMap<Flavour, AtomicInteger> COUNTERS = new HashMap<Flavour, AtomicInteger>();
     public static HashMap<Flavour, Long> SEQUENCES = new HashMap<Flavour, Long>();
 
-    public static int MAX_PARALLEL_FLAVOURS = 2;
+    public static int MAX_PARALLEL_FLAVOURS = 4;
 
     @Override
     public void eat(Candy candy) {

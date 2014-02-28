@@ -1,8 +1,6 @@
 package impl;
 
-import contracts.Candy;
-import contracts.CandyEater;
-import contracts.Flavour;
+import contracts.*;
 
 import java.util.Set;
 import java.util.concurrent.*;
@@ -37,6 +35,7 @@ public class EatingProcessModel {
      */
     private volatile Thread thread1, thread2;
 
+
     /**
      * Количество выбранных из входящей очереди конфет, ожидающих поедания.
      */
@@ -47,8 +46,8 @@ public class EatingProcessModel {
      */
     private final ExecutorService taskExecutor;
 
-    public EatingProcessModel(BlockingQueue<Candy> inputQueue, Set<CandyEater> eaters) {
-        inputDispatcher = new InputQueueDispatcher(inputQueue);
+    public EatingProcessModel(BlockingQueue<Candy> inputQueue, Set<CandyEater> eaters, SchedulerFactory factory) {
+        inputDispatcher = new InputQueueDispatcher(inputQueue, factory);
         requestDispatcher = new RequestQueueDispatcher(eaters);
         requestQueue = new LinkedBlockingQueue<EatingRequest>();
         taskExecutor = Executors.newCachedThreadPool();
@@ -94,11 +93,18 @@ public class EatingProcessModel {
         /**
          * Отображение из вкуса в модель процесса поедания конфет данного вкуса.
          */
-        private final ConcurrentHashMap<Flavour, FlavourProducerConsumerModel> modelMap;
+        private final ConcurrentHashMap<Flavour, FlavourScheduler> schedulerMap;
 
-        InputQueueDispatcher(BlockingQueue<Candy> inputQueue) {
+        /**
+         * Фабрика по производству планировщиков поедания конфет каждого вкуса.
+         */
+        private final SchedulerFactory factory;
+
+
+        InputQueueDispatcher(BlockingQueue<Candy> inputQueue, SchedulerFactory factory) {
             this.inputQueue = inputQueue;
-            this.modelMap = new ConcurrentHashMap<Flavour, FlavourProducerConsumerModel>();
+            this.schedulerMap = new ConcurrentHashMap<Flavour, FlavourScheduler>();
+            this.factory = factory;
         }
 
         @Override
@@ -121,13 +127,13 @@ public class EatingProcessModel {
          */
         void enqueue(Candy candy) throws InterruptedException {
             Flavour flavour = candy.getFlavour();
-            FlavourProducerConsumerModel targetModel = modelMap.get(flavour);
-            if(targetModel == null) {
-                FlavourProducerConsumerModel temp = new FlavourProducerConsumerModel(requestQueue, 2);
-                FlavourProducerConsumerModel existing = modelMap.putIfAbsent(flavour, temp);
-                targetModel = existing == null ? temp : existing;
+            FlavourScheduler scheduler = schedulerMap.get(flavour);
+            if(scheduler == null) {
+                FlavourScheduler temp = factory.create(flavour, requestQueue);
+                FlavourScheduler existing = schedulerMap.putIfAbsent(flavour, temp);
+                scheduler = existing == null ? temp : existing;
             }
-            targetModel.enqueue(candy);
+            scheduler.enqueue(candy);
             pendingRequests.incrementAndGet();
         }
     }
@@ -167,13 +173,12 @@ public class EatingProcessModel {
 
         /**
          * Выбирает первого свободного поедателя.
-         * @return
          */
         private void process() throws InterruptedException {
             CandyEater readyEater = readyEaters.poll(100, TimeUnit.MILLISECONDS);
             if (readyEater == null)
                 return;
-            EatingRequest request = requestQueue.poll(10, TimeUnit.MILLISECONDS);
+            EatingRequest request = requestQueue.poll();
             if (request == null)
                 readyEaters.put(readyEater);
             else
@@ -182,9 +187,9 @@ public class EatingProcessModel {
 
         @Override
         public void complete(CandyEatingTask task) throws InterruptedException {
-            pendingRequests.decrementAndGet();
             readyEaters.put(task.getEater());
             task.getRequest().complete();
+            pendingRequests.decrementAndGet();
         }
     }
 }

@@ -55,53 +55,6 @@
       </breakpoint>
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/TrackingEater.java" line="20" class="test.TrackingEater" package="test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/TrackingEater.java" line="27" class="test.TrackingEater" package="test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/test/TrackingEater.java" line="23" class="test.TrackingEater" package="test">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -111,70 +64,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EatingProcessModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/impl/EatingProcessModel.java">
+      <file leaf-file-name="EaterFacility.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/impl/EaterFacility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="46" selection-start="1410" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="3332">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CandyEatingTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/impl/CandyEatingTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="46" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="782">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CountedCandy.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/CountedCandy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#346#347#0" expanded="true" />
-                <element signature="e#379#380#0" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-                <element signature="e#458#459#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Candy.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/contracts/Candy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="9" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+            <state line="36" column="24" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TrackingEater.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/TrackingEater.java">
+      <file leaf-file-name="NonBlockingFlavourScheduler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/impl/scheduling/NonBlockingFlavourScheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="65" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+            <state line="23" column="26" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#296#320#0" expanded="true" />
-                <element signature="e#388#403#0" expanded="true" />
+                <element signature="method#NonBlockingFlavourScheduler#0;class#NonBlockingFlavourScheduler#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlavourProducerConsumerModel.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/impl/FlavourProducerConsumerModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="20" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.51338875" vertical-offset="277" max-vertical-offset="1360">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -182,10 +87,58 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="64" selection-start="1026" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="935">
+            <state line="19" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1377">
               <folding>
-                <element signature="e#819#831#0" expanded="true" />
-                <element signature="e#1044#1051#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#952#964#0" expanded="true" />
+                <element signature="e#1177#1184#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LockFreeSchedulerFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/impl/scheduling/LockFreeSchedulerFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="82" max-vertical-offset="1020">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockingSchedulerFactory.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/impl/scheduling/BlockingSchedulerFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="33" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="850">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockingFlavourScheduler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/impl/scheduling/BlockingFlavourScheduler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="55" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#814#821#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrackingEater.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/TrackingEater.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.23545706" vertical-offset="0" max-vertical-offset="1083">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#296#320#0" expanded="true" />
+                <element signature="e#388#403#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -228,11 +181,25 @@
         <option value="$PROJECT_DIR$/src/test/CountedCandy.java" />
         <option value="$PROJECT_DIR$/src/contracts/Candy.java" />
         <option value="$PROJECT_DIR$/src/impl/FlavouredCandy.java" />
-        <option value="$PROJECT_DIR$/src/impl/FlavourProducerConsumerModel.java" />
+        <option value="$PROJECT_DIR$/src/contracts/ProducerConsumer.java" />
+        <option value="$PROJECT_DIR$/src/contracts/FlavourQueueStrategy.java" />
+        <option value="$PROJECT_DIR$/src/contracts/FlavourSchedulingStrategy.java" />
+        <option value="$PROJECT_DIR$/src/contracts/FlavourScheduler.java" />
         <option value="$PROJECT_DIR$/src/impl/EaterFacility.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/impl/FlavourProducerConsumerModel.java" />
+        <option value="$PROJECT_DIR$/src/impl/LockFreeSchedulerFactory.java" />
+        <option value="$PROJECT_DIR$/src/contracts/SchedulerFactory.java" />
+        <option value="$PROJECT_DIR$/src/impl/BlockingSchedulerFactory.java" />
+        <option value="$PROJECT_DIR$/src/impl/NonBlockingFlavourScheduler.java" />
+        <option value="$PROJECT_DIR$/src/impl/BlockingFlavourScheduler.java" />
+        <option value="$PROJECT_DIR$/src/impl/schedulers/BlockingFlavourScheduler.java" />
+        <option value="$PROJECT_DIR$/src/impl/schedulers/NonBlockingFlavourScheduler.java" />
+        <option value="$PROJECT_DIR$/src/impl/scheduling/NonBlockingFlavourScheduler.java" />
+        <option value="$PROJECT_DIR$/src/impl/scheduling/BlockingSchedulerFactory.java" />
         <option value="$PROJECT_DIR$/src/impl/EatingProcessModel.java" />
         <option value="$PROJECT_DIR$/src/test/TrackingEater.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/impl/scheduling/BlockingFlavourScheduler.java" />
       </list>
     </option>
   </component>
@@ -316,7 +283,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -334,7 +301,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
+              <option name="myItemId" value="contracts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -505,7 +472,7 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -515,7 +482,6 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -533,7 +499,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -552,8 +518,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1484375" sideWeight="0.67044383" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35798016" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14895834" sideWeight="0.67044383" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3606853" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="503" y="407" width="735" height="561" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.67044383" order="3" side_tool="false" content_ui="tabs" />
@@ -583,24 +549,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/impl/EaterFacility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="748">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/EatingProcessModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="7" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1360">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/contracts/CandyEater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="26" selection-start="151" selection-end="173" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="306">
@@ -608,10 +556,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/FlavourProducerConsumerModel.java">
+    <entry file="file://$PROJECT_DIR$/src/impl/scheduling/NonBlockingFlavourScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="20" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="1377">
-          <folding />
+          <folding>
+            <element signature="method#NonBlockingFlavourScheduler#0;class#NonBlockingFlavourScheduler#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -633,8 +583,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="32" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="935">
           <folding>
-            <element signature="e#819#831#0" expanded="true" />
-            <element signature="e#1044#1051#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#952#964#0" expanded="true" />
+            <element signature="e#1177#1184#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -652,8 +603,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="32" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="935">
           <folding>
-            <element signature="e#819#831#0" expanded="true" />
-            <element signature="e#1044#1051#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#952#964#0" expanded="true" />
+            <element signature="e#1177#1184#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -671,8 +623,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="32" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="935">
           <folding>
-            <element signature="e#819#831#0" expanded="true" />
-            <element signature="e#1044#1051#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#952#964#0" expanded="true" />
+            <element signature="e#1177#1184#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -761,49 +714,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/contracts/Candy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="9" selection-start="167" selection-end="167" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/CountedCandy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
-            <element signature="e#379#380#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#458#459#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/FlavouredCandy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="24" selection-start="555" selection-end="555" vertical-scroll-proportion="0.3767313" vertical-offset="0" max-vertical-offset="1083">
-          <folding>
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/impl/NamedEater.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="31" selection-start="472" selection-end="472" vertical-scroll-proportion="0.52040815" vertical-offset="0" max-vertical-offset="686">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/CandyEatingTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="46" selection-start="487" selection-end="487" vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="782">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -814,47 +728,228 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/EaterFacility.java">
+    <entry file="file://$PROJECT_DIR$/src/contracts/FlavourScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="27" selection-start="754" selection-end="754" vertical-scroll-proportion="0.49562684" vertical-offset="0" max-vertical-offset="686">
+        <state line="5" column="33" selection-start="124" selection-end="124" vertical-scroll-proportion="0.07848569" vertical-offset="0" max-vertical-offset="1083">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar!/sun/nio/ch/Interruptible.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="64" selection-start="1026" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="935">
+        <state line="7" column="9" selection-start="182" selection-end="182" vertical-scroll-proportion="0.09418283" vertical-offset="0" max-vertical-offset="1083">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1006" column="27" selection-start="39254" selection-end="39254" vertical-scroll-proportion="0.33333334" vertical-offset="16112" max-vertical-offset="34238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/BlockingQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="232" column="9" selection-start="8651" selection-end="8651" vertical-scroll-proportion="0.33333334" vertical-offset="3005" max-vertical-offset="5933">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/LinkedBlockingQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="48" selection-start="2025" selection-end="2025" vertical-scroll-proportion="0.33333334" vertical-offset="285" max-vertical-offset="14909">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/contracts/SchedulerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="17" selection-start="303" selection-end="303" vertical-scroll-proportion="0.20406279" vertical-offset="0" max-vertical-offset="1083">
           <folding>
-            <element signature="e#819#831#0" expanded="true" />
-            <element signature="e#1044#1051#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/TrackingEater.java">
+    <entry file="file://$PROJECT_DIR$/src/impl/CandyEatingTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="65" selection-start="572" selection-end="572" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+        <state line="22" column="46" selection-start="487" selection-end="487" vertical-scroll-proportion="0.2825485" vertical-offset="0" max-vertical-offset="1083">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#296#320#0" expanded="true" />
-            <element signature="e#388#403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/CountedCandy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="5" selection-start="380" selection-end="380" vertical-scroll-proportion="0.26685134" vertical-offset="0" max-vertical-offset="1083">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#346#347#0" expanded="false" />
+            <element signature="e#379#380#0" expanded="false" />
+            <element signature="e#428#429#0" expanded="false" />
+            <element signature="e#458#459#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/ReadWriteLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="118" column="17" selection-start="4696" selection-end="4696" vertical-scroll-proportion="0.6703601" vertical-offset="719" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/ReentrantReadWriteLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="698" column="20" selection-start="26316" selection-end="26316" vertical-scroll-proportion="0.42751616" vertical-offset="10808" max-vertical-offset="24769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/impl/FlavouredCandy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="11" selection-start="282" selection-end="282" vertical-scroll-proportion="0.21975993" vertical-offset="0" max-vertical-offset="1083">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/org/w3c/dom/css/Counter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="17" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.17266852" vertical-offset="0" max-vertical-offset="1083">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/contracts/Candy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="67" selection-end="67" vertical-scroll-proportion="0.07848569" vertical-offset="0" max-vertical-offset="1083">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1143" column="0" selection-start="44213" selection-end="44213" vertical-scroll-proportion="0.0" vertical-offset="18540" max-vertical-offset="26962">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/impl/scheduling/BlockingSchedulerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="33" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="850">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/impl/EatingProcessModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="46" selection-start="1410" selection-end="1429" vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="3332">
+        <state line="189" column="0" selection-start="5979" selection-end="6114" vertical-scroll-proportion="0.0" vertical-offset="2317" max-vertical-offset="3417">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/impl/FlavourProducerConsumerModel.java">
+    <entry file="file://$PROJECT_DIR$/src/impl/scheduling/NonBlockingFlavourScheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="20" selection-start="1602" selection-end="1602" vertical-scroll-proportion="0.51338875" vertical-offset="277" max-vertical-offset="1360">
+        <state line="23" column="26" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+          <folding>
+            <element signature="method#NonBlockingFlavourScheduler#0;class#NonBlockingFlavourScheduler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/impl/EaterFacility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="24" selection-start="1047" selection-end="1047" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/impl/scheduling/LockFreeSchedulerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0" vertical-offset="82" max-vertical-offset="1020">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="566" selection-end="566" vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="1377">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#952#964#0" expanded="true" />
+            <element signature="e#1177#1184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/AbstractQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="12" selection-start="2895" selection-end="2907" vertical-scroll-proportion="-1.6450151" vertical-offset="2143" max-vertical-offset="2805">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/Condition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="239" column="28" selection-start="9764" selection-end="9770" vertical-scroll-proportion="0.58912385" vertical-offset="3095" max-vertical-offset="7820">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="17" selection-start="6505" selection-end="6505" vertical-scroll-proportion="-2.0923362" vertical-offset="4510" max-vertical-offset="5593">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/impl/scheduling/BlockingFlavourScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="55" selection-start="1103" selection-end="1103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#814#821#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1859" column="16" selection-start="72270" selection-end="72270" vertical-scroll-proportion="0.6214689" vertical-offset="30263" max-vertical-offset="39032">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="171" column="35" selection-start="5640" selection-end="5640" vertical-scroll-proportion="0.34903046" vertical-offset="1934" max-vertical-offset="12597">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ArrayBlockingQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="7" selection-start="4475" selection-end="4475" vertical-scroll-proportion="0.3961219" vertical-offset="1917" max-vertical-offset="13209">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/TrackingEater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="457" selection-end="457" vertical-scroll-proportion="0.23545706" vertical-offset="0" max-vertical-offset="1083">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#296#320#0" expanded="true" />
+            <element signature="e#388#403#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

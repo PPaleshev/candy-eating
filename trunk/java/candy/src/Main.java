@@ -1,16 +1,19 @@
 import contracts.Candy;
 import contracts.CandyEater;
 import contracts.Flavour;
-import impl.*;
-import org.omg.CORBA.Environment;
+import contracts.SchedulerFactory;
+import impl.EaterFacility;
+import impl.EatingProcessModel;
+import impl.FlavouredCandy;
+import impl.NamedFlavour;
+import impl.scheduling.BlockingSchedulerFactory;
+import impl.scheduling.LockFreeSchedulerFactory;
 import test.TrackingEater;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
@@ -30,33 +33,43 @@ public class Main {
         Random rnd = new Random(System.currentTimeMillis());
 
         BlockingQueue<Candy> inputQueue = new ArrayBlockingQueue<Candy>(1000000);
-        EaterFacility facility = new EaterFacility();
+        SchedulerFactory factory = new BlockingSchedulerFactory(null, 4);
+        EaterFacility facility = new EaterFacility(factory);
         facility.launch(inputQueue, eaters);
 
-        long nanos = System.nanoTime();
+        System.out.println("Allocating candies... ");
+        Candy[] candies = new Candy[1000000];
+        for (int i = 0; i < candies.length; i++)
+            candies[i] = new FlavouredCandy(flavours[rnd.nextInt(32)], i);
+        System.out.println("Allocated "+ candies.length+" candies");
 
-        for(long i = 0; i<50000000; i++) {
-            int index = rnd.nextInt(32);
-            try {
-                inputQueue.put(new FlavouredCandy(flavours[index], i));
-            } catch (InterruptedException e){
-                System.out.println("Interrupt");
+        long nanos = System.nanoTime();
+        try {
+            for(int iteration = 0; iteration < 100; iteration++)
+            for (Candy candy : candies) {
+                inputQueue.put(candy);
             }
+        } catch (InterruptedException e){
+            System.out.println("Interrupt");
         }
 
         long current = System.nanoTime();
-        System.out.println("all candies are enqueued in "+ TimeUnit.SECONDS.convert(current-nanos, TimeUnit.NANOSECONDS));
+        System.out.println("all candies are enqueued in " + time(current-nanos));
 
         while (EatingProcessModel.pendingRequests.get() > 0) {
             try {
                 Thread.sleep(1000);
-                System.out.println("Pending requests: "+EatingProcessModel.pendingRequests.get());
+                System.out.println("Pending requests: " + EatingProcessModel.pendingRequests.get());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
         facility.shutdown();
-        System.out.println("done in "+ TimeUnit.SECONDS.convert(System.nanoTime()-current, TimeUnit.NANOSECONDS));
+        System.out.println("done in "+ time(System.nanoTime() - current));
+    }
+
+    static String time(long nanoseconds) {
+        return String.valueOf((double) nanoseconds / 1000000000.0);
     }
 }
