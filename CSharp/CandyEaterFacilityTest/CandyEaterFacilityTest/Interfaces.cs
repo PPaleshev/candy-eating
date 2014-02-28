@@ -19,6 +19,11 @@ namespace CandyEaterFacilityTest
         /// Test purpose only
         /// </summary>
         long GetFlavourSequenceNumber();
+
+        /// <summary>
+        /// Test purpose only
+        /// </summary>
+        void EatMe();
     }
 
     public interface ICandyEater 
@@ -29,6 +34,8 @@ namespace CandyEaterFacilityTest
     public interface ICandyEatingFacility
     {
         void Launch(BlockingCollection<ICandy> candies, HashSet<ICandyEater> candyEaters);
+
+        void Launch(ConcurrentQueue<ICandy> candies, HashSet<ICandyEater> candyEaters);
 
         void Shutdown();
     }
