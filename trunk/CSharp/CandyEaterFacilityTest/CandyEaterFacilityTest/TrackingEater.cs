@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace CandyEaterFacilityTest
 {
@@ -7,9 +8,13 @@ namespace CandyEaterFacilityTest
     {
         public static Dictionary<IFlavour, AtomicLong> FlavourConcurrencyCounters = new Dictionary<IFlavour, AtomicLong>();
         public static Dictionary<IFlavour, AtomicLong> FlavourSequences = new Dictionary<IFlavour, AtomicLong>();
-        
+
+        private long eating;
+
         public void Eat(ICandy candy)
         {
+            if (Interlocked.CompareExchange(ref eating, 1, 0) != 0)
+                Console.Out.WriteLine("Attempt to eat more than one candy simultaneously");
             var flavour = candy.GetFlavour();
             AtomicLong counter = FlavourConcurrencyCounters[flavour];
             var maxParallelFlavours = flavour.GetConcurrencyLevel();
@@ -25,6 +30,8 @@ namespace CandyEaterFacilityTest
             }
             if (counter.DecrementAndGet() < 0)
                 Console.Out.WriteLine("Flavour {0} violates minimum", flavour);
+            if (Interlocked.CompareExchange(ref eating, 0, 1) != 1)
+                Console.Out.WriteLine("Attempt to eat more than one candy simultaneously");
         }
     }
 }

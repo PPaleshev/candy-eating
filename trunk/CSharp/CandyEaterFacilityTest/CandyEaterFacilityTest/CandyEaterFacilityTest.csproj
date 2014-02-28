@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtomicLong.cs" />
-    <Compile Include="Candy.cs" />
+    <Compile Include="CandyTest.cs" />
+    <Compile Include="DisruptorCandyEatingFacility\CandyHandler.cs" />
+    <Compile Include="DisruptorCandyEatingFacility\DisruptorCandyCandyEatingProcessModel.cs" />
+    <Compile Include="DisruptorCandyEatingFacility\RingBufferValueEntry.cs" />
     <Compile Include="EatingFacilityFacade.cs" />
-    <Compile Include="IEatingProcessModel.cs" />
+    <Compile Include="ICandyEatingProcessModel.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="NamedFlavour.cs" />
     <Compile Include="Program.cs" />
@@ -59,7 +62,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DisruptorCandyEatingFacility\" />
     <Folder Include="LockCandyEatingFacility\" />
     <Folder Include="LockFreeProducerConsumerCandyEatingFacility\" />
   </ItemGroup>

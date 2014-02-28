@@ -18,19 +18,28 @@ namespace CandyEaterFacilityTest
             return Interlocked.Increment(ref value);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Exchange(long newValue)
         {
             Interlocked.Exchange(ref value, newValue);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public long Get()
         {
             return Interlocked.Read(ref value);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public long DecrementAndGet()
         {
             return Interlocked.Decrement(ref value);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void Add(long valueToAdd)
+        {
+            Interlocked.Add(ref value, valueToAdd);
         }
     }
 }
