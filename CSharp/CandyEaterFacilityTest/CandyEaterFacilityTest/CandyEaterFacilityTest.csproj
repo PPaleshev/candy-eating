@@ -47,11 +47,16 @@
     <Compile Include="AtomicLong.cs" />
     <Compile Include="CandyTest.cs" />
     <Compile Include="DisruptorCandyEatingFacility\CandyHandler.cs" />
-    <Compile Include="DisruptorCandyEatingFacility\DisruptorCandyCandyEatingProcessModel.cs" />
+    <Compile Include="DisruptorCandyEatingFacility\CandyEatingProcessModel.cs" />
     <Compile Include="DisruptorCandyEatingFacility\RingBufferValueEntry.cs" />
     <Compile Include="EatingFacilityFacade.cs" />
     <Compile Include="ICandyEatingProcessModel.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="LockFreeProducerConsumerCandyEatingFacility\CandyEatingProcessModel.cs" />
+    <Compile Include="LockFreeProducerConsumerCandyEatingFacility\CandyEatingTask.cs" />
+    <Compile Include="LockFreeProducerConsumerCandyEatingFacility\EatingRequest.cs" />
+    <Compile Include="LockFreeProducerConsumerCandyEatingFacility\FlavourProducerConsumerModel.cs" />
+    <Compile Include="LockFreeProducerConsumerCandyEatingFacility\ICallback.cs" />
     <Compile Include="NamedFlavour.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="LockCandyEatingFacility\" />
-    <Folder Include="LockFreeProducerConsumerCandyEatingFacility\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
