@@ -15,8 +15,7 @@ namespace CandyEaterFacilityTest.DisruptorCandyEatingFacility
         private readonly RingBuffer<RingBufferValueEntry> ringBuffer;
         private readonly AtomicLong heatingCounter;
         private readonly IEventHandler<RingBufferValueEntry>[] handlers;
-        private volatile bool shutdownFlag;
-
+        
         public CandyEatingProcessModel(HashSet<ICandyEater> candyEaters)
         {
             heatingCounter = new AtomicLong(0);
