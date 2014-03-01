@@ -39,6 +39,8 @@ namespace CandyEaterFacilityTest.LockFreeProducerConsumerCandyEatingFacility
             {
                 if (!requestQueue.TryDequeue(out request))
                     Thread.Yield();
+                else
+                    break;
             }
             if (request == null)
                 return;
@@ -48,8 +50,8 @@ namespace CandyEaterFacilityTest.LockFreeProducerConsumerCandyEatingFacility
                 if (!candyEaters.TryDequeue(out candyEater))
                     Thread.Yield();
             }
-            //ThreadPool.UnsafeQueueUserWorkItem(ThreadPoolWork, new CandyEatingTask(request, candyEater));
-            ThreadPool.QueueUserWorkItem(ThreadPoolWork, new CandyEatingTask(request, candyEater));
+            ThreadPool.UnsafeQueueUserWorkItem(ThreadPoolWork, new CandyEatingTask(request, candyEater));
+            //ThreadPool.QueueUserWorkItem(ThreadPoolWork, new CandyEatingTask(request, candyEater));
         }
 
         private void ThreadPoolWork(object state)
