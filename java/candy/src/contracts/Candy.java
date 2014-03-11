@@ -9,5 +9,7 @@ public interface Candy {
      */
     Flavour getFlavour();
 
+    void eatMe();
+
     long getSequenceNo();
 }

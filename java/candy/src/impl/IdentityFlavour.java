@@ -3,16 +3,21 @@ package impl;
 import contracts.Flavour;
 
 /**
- * Именованный вкус.
+ * Уникальный вкус.
  */
-public class NamedFlavour implements Flavour {
+public class IdentityFlavour implements Flavour {
     /**
-     * Название вкуса.
+     * Идентификатор вкус.
      */
-    final String type;
+    private final int number;
 
-    public NamedFlavour(String type) {
-        this.type = type;
+    public IdentityFlavour(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public int getId() {
+        return number;
     }
 
     @Override
@@ -21,7 +26,7 @@ public class NamedFlavour implements Flavour {
             throw new IllegalArgumentException();
         if(this==o)
             return 0;
-        return type.compareTo(((NamedFlavour)o).type);
+        return Integer.compare(number, ((IdentityFlavour)o).number);
     }
 
     @Override
@@ -30,17 +35,17 @@ public class NamedFlavour implements Flavour {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        NamedFlavour flavour = (NamedFlavour) o;
-        return type.equals(flavour.type);
+        IdentityFlavour flavour = (IdentityFlavour) o;
+        return number ==  flavour.number;
     }
 
     @Override
     public int hashCode() {
-        return type.hashCode();
+        return number;
     }
 
     @Override
     public String toString() {
-        return type;
+        return String.valueOf(number);
     }
 }

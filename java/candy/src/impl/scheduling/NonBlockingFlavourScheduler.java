@@ -2,8 +2,8 @@ package impl.scheduling;
 
 import contracts.Candy;
 import contracts.FlavourScheduler;
+import impl.producerconsumer.CandyEatingRequestCallback;
 import impl.EatingRequest;
-import impl.ICandyEatingRequestCallback;
 
 import java.util.Queue;
 import java.util.concurrent.*;
@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Модель поедания конфет <b>одного</b> вкуса.
  */
-public class NonBlockingFlavourScheduler implements ICandyEatingRequestCallback, FlavourScheduler {
+public class NonBlockingFlavourScheduler implements CandyEatingRequestCallback, FlavourScheduler {
     /**
      * Уровень параллеллизма при поедании конфет.
      */
@@ -36,7 +36,7 @@ public class NonBlockingFlavourScheduler implements ICandyEatingRequestCallback,
     public NonBlockingFlavourScheduler(Queue<EatingRequest> outputTasks, int consumerDegreeOfParallelism) {
         this.outputRequests = outputTasks;
         degreeOfParallelism = consumerDegreeOfParallelism;
-        candies = new ConcurrentLinkedQueue<Candy>();
+        candies = new ConcurrentLinkedQueue<>();
     }
 
     /**

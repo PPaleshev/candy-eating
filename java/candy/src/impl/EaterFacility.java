@@ -1,48 +1,42 @@
 package impl;
 
-import contracts.Candy;
-import contracts.CandyEater;
-import contracts.CandyEatingFacility;
-import contracts.SchedulerFactory;
+import contracts.*;
 
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Механизм поедания конфет.
+ */
 public class EaterFacility implements CandyEatingFacility {
     /**
-     * Фабрика для создания планировщиков поедания конфет определённого вкуса.
+     * Стратегия работы механизма.
      */
-    final SchedulerFactory factory;
+    final CandyEatingFacilityStrategy strategy;
 
     /**
      * Флаг, равный true, если процесс был инициализирован, иначе false.
      */
     volatile boolean launched = false;
 
-    /**
-     * Модель процесса поедания конфет.
-     */
-    EatingProcessModel model;
-
-    public EaterFacility(SchedulerFactory factory) {
-        this.factory = factory;
+    public EaterFacility(CandyEatingFacilityStrategy strategy) {
+        this.strategy = strategy;
     }
 
     @Override
     public synchronized void launch(BlockingQueue<Candy> candies, Set<CandyEater> candyEaters) {
-        if(launched)
+        if (launched)
             throw new IllegalStateException("eaters facility is already launched");
-        model = new EatingProcessModel(candies, candyEaters, factory);
-        model.startAsync();
+        strategy.start();
         launched = true;
         System.out.println("facility is launched");
     }
 
     @Override
     public synchronized void shutdown() {
-        if(!launched)
+        if (!launched)
             throw new IllegalStateException("eaters facility is not launched");
         launched = false;
-        model.shutdownSync();
+        strategy.shutdownAndWait();
     }
 }

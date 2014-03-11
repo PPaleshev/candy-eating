@@ -1,11 +1,12 @@
-package impl;
+package impl.producerconsumer;
 
 import contracts.CandyEater;
+import impl.CandyEatingTask;
 
 /**
  * Интерфейс для выполнения обратного вызова по факту завершения поедания конфеты.
  */
-public interface ICandyEatingCallback {
+public interface CandyEatingCallback {
     /**
      * Завершает выполнение задачи поедания конфеты.
      * @param task завершённая задача.
