@@ -1,8 +1,7 @@
 package impl;
 
 import contracts.CandyEater;
-
-import java.util.Arrays;
+import impl.producerconsumer.CandyEatingCallback;
 
 /**
  * Задача поедания конфеты некоторым поедателем.
@@ -10,7 +9,7 @@ import java.util.Arrays;
 public class CandyEatingTask implements Runnable {
     private final EatingRequest request;
     private final CandyEater eater;
-    private final ICandyEatingCallback callback;
+    private final CandyEatingCallback callback;
 
     public EatingRequest getRequest() {
         return request;
@@ -20,7 +19,7 @@ public class CandyEatingTask implements Runnable {
         return eater;
     }
 
-    public CandyEatingTask(EatingRequest request, CandyEater eater, ICandyEatingCallback callback) {
+    public CandyEatingTask(EatingRequest request, CandyEater eater, CandyEatingCallback callback) {
         this.request = request;
         this.eater = eater;
         this.callback = callback;

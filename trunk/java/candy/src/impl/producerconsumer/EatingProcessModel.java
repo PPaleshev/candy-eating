@@ -1,7 +1,12 @@
-package impl;
+package impl.producerconsumer;
 
 import contracts.*;
+import impl.CandyEatingTask;
+import impl.EatingRequest;
+import impl.producerconsumer.CandyEatingCallback;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,21 +14,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Модель.
  */
-public class EatingProcessModel {
+public class EatingProcessModel implements CandyEatingFacilityStrategy {
     /**
      * Флаг, равный true, если инициирована остановка выборки конфет из входящей очереди.
      */
     private volatile boolean shutdownFlag;
-
-    /**
-     * Диспетчер очереди входящих конфет.
-     */
-    private final InputQueueDispatcher inputDispatcher;
-
-    /**
-     * Диспетчер очереди запросов на поедание.
-     */
-    private final RequestQueueDispatcher requestDispatcher;
 
     /**
      * Очередь запросов на поедание конфет.
@@ -31,10 +26,14 @@ public class EatingProcessModel {
     private final BlockingQueue<EatingRequest> requestQueue;
 
     /**
-     * Потоки, в которых работают inputDispatcher и requestDispatcher.
+     * Поток, обслуживающий выборку конфет из входящей очереди.
      */
-    private volatile Thread thread1, thread2;
+    private final Thread inputDispatcherThread;
 
+    /**
+     * Поток, выполняющий выборку готовых запросов на поедание.
+     */
+    private final Thread requestDispatcherThread;
 
     /**
      * Количество выбранных из входящей очереди конфет, ожидающих поедания.
@@ -47,33 +46,35 @@ public class EatingProcessModel {
     private final ExecutorService taskExecutor;
 
     public EatingProcessModel(BlockingQueue<Candy> inputQueue, Set<CandyEater> eaters, SchedulerFactory factory) {
-        inputDispatcher = new InputQueueDispatcher(inputQueue, factory);
-        requestDispatcher = new RequestQueueDispatcher(eaters);
-        requestQueue = new LinkedBlockingQueue<EatingRequest>();
-        taskExecutor = Executors.newCachedThreadPool();
+        inputDispatcherThread = new Thread(new InputQueueDispatcher(inputQueue, factory));
+        requestDispatcherThread = new Thread(new RequestQueueDispatcher(eaters));
+        requestQueue = new LinkedBlockingQueue<>();
+        taskExecutor = new ThreadPoolExecutor(7, 7, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+    }
+
+    @Override
+    public int getPendingCandies() {
+        return pendingRequests.get();
     }
 
     /**
      * Начинает выполнение процесса поедания конфет из входящей очереди.
      * Метод не реентерабельный, должен вызываться однократно.
      */
-    public void startAsync() {
-        Thread t1 = new Thread(inputDispatcher);
-        Thread t2 = new Thread(requestDispatcher);
-        t1.start();
-        t2.start();
-        thread1 = t1;
-        thread2 = t2;
+    public synchronized void start() {
+        inputDispatcherThread.start();
+        requestDispatcherThread.start();
     }
 
     /**
-     * Устанавливает флаг прекращения выемки новых конфет из входящей очереди.
+     * Устанавливает флаг прекращения выемки новых конфет из входящей очереди и завершения обработки всех извлечённых конфет.
+     * Синхронно ожидает завершения обработки.
      */
-    public void shutdownSync() {
+    public synchronized void shutdownAndWait() {
         shutdownFlag = true;
         try {
-            thread1.join();
-            thread2.join();
+            inputDispatcherThread.join();
+            requestDispatcherThread.join();
             taskExecutor.shutdown();
             assert taskExecutor.awaitTermination(0, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e){
@@ -91,19 +92,18 @@ public class EatingProcessModel {
         private final BlockingQueue<Candy> inputQueue;
 
         /**
-         * Отображение из вкуса в модель процесса поедания конфет данного вкуса.
+         * Отображение из вкуса в стратегию планирования поедания конфет этого вкуса.
          */
-        private final ConcurrentHashMap<Flavour, FlavourScheduler> schedulerMap;
+        private final Map<Flavour, FlavourScheduler> schedulerMap;
 
         /**
          * Фабрика по производству планировщиков поедания конфет каждого вкуса.
          */
         private final SchedulerFactory factory;
 
-
         InputQueueDispatcher(BlockingQueue<Candy> inputQueue, SchedulerFactory factory) {
             this.inputQueue = inputQueue;
-            this.schedulerMap = new ConcurrentHashMap<Flavour, FlavourScheduler>();
+            this.schedulerMap = new HashMap<>();
             this.factory = factory;
         }
 
@@ -128,10 +128,9 @@ public class EatingProcessModel {
         void enqueue(Candy candy) throws InterruptedException {
             Flavour flavour = candy.getFlavour();
             FlavourScheduler scheduler = schedulerMap.get(flavour);
-            if(scheduler == null) {
-                FlavourScheduler temp = factory.create(flavour, requestQueue);
-                FlavourScheduler existing = schedulerMap.putIfAbsent(flavour, temp);
-                scheduler = existing == null ? temp : existing;
+            if (scheduler == null) {
+                scheduler = factory.create(flavour, requestQueue);
+                schedulerMap.put(flavour, scheduler);
             }
             scheduler.enqueue(candy);
             pendingRequests.incrementAndGet();
@@ -141,14 +140,14 @@ public class EatingProcessModel {
     /**
      * Процесс передачи готовых запросов на поедание в обработку.
      */
-    class RequestQueueDispatcher implements Runnable, ICandyEatingCallback {
+    class RequestQueueDispatcher implements Runnable, CandyEatingCallback {
         /**
          * Очередь поедателей, готовых к поеданию конфет.
          */
         private final BlockingQueue<CandyEater> readyEaters;
 
         public RequestQueueDispatcher(Set<CandyEater> eaters) {
-            readyEaters = new LinkedBlockingQueue<CandyEater>(eaters);
+            readyEaters = new LinkedBlockingQueue<>(eaters);
         }
 
         @Override
@@ -172,7 +171,7 @@ public class EatingProcessModel {
         }
 
         /**
-         * Выбирает первого свободного поедателя.
+         * Ожидает появления готового поедателя и отдаёт ему запрос на поедание.
          */
         private void process() throws InterruptedException {
             CandyEater readyEater = readyEaters.poll(100, TimeUnit.MILLISECONDS);

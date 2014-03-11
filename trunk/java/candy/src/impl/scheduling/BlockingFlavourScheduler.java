@@ -2,10 +2,9 @@ package impl.scheduling;
 
 import contracts.Candy;
 import contracts.FlavourScheduler;
+import impl.producerconsumer.CandyEatingRequestCallback;
 import impl.EatingRequest;
-import impl.ICandyEatingRequestCallback;
 
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
@@ -13,7 +12,7 @@ import java.util.concurrent.Semaphore;
 /**
  * Реализация стратегии планирования поедания конфет, использующей блокировки.
  */
-public class BlockingFlavourScheduler implements FlavourScheduler, ICandyEatingRequestCallback {
+public class BlockingFlavourScheduler implements FlavourScheduler, CandyEatingRequestCallback {
     /**
      * Семафор для управления количеством
      */
@@ -29,11 +28,6 @@ public class BlockingFlavourScheduler implements FlavourScheduler, ICandyEatingR
      */
     private final Queue<Candy> candies = new ConcurrentLinkedQueue<Candy>();
 
-    /**
-     * Объект для блокировки при работе с очередью конфет.
-     */
-    private final Object lock = new Object();
-
     public BlockingFlavourScheduler(int degreeOfParallelism, Queue<EatingRequest> outputRequests) {
         semaphore = new Semaphore(degreeOfParallelism);
         this.outputRequests = outputRequests;
@@ -44,23 +38,19 @@ public class BlockingFlavourScheduler implements FlavourScheduler, ICandyEatingR
         candies.add(candy);
         if (!semaphore.tryAcquire())
             return;
-        synchronized (lock) {
-            Candy next = candies.poll();
-            if(next != null)
-                outputRequests.add(new EatingRequest(next, this));
-            else
-                semaphore.release();
-        }
+        Candy next = candies.poll();
+        if(next != null)
+            outputRequests.add(new EatingRequest(next, this));
+        else
+            semaphore.release();
     }
 
     @Override
     public void complete() throws InterruptedException {
-        synchronized (lock) {
-            Candy next = candies.poll();
-            if(next == null)
-                semaphore.release();
-            else
-                outputRequests.add(new EatingRequest(next, this));
-        }
+        Candy next = candies.poll();
+        if(next == null)
+            semaphore.release();
+        else
+            outputRequests.add(new EatingRequest(next, this));
     }
 }
